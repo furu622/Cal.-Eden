@@ -1,0 +1,248 @@
+/*
+  Cal. Eden
+  © 2026 ふる. All Rights Reserved.
+  Unauthorized use, reproduction, or modification is prohibited.
+*/
+
+/*=================================================================*/
+
+
+/* =======================================================
+   Math Flow & Flash - CSS整理版
+=======================================================
+1. 全体共通スタイル
+2. Game Menu タイトル・サブタイトル
+3. ボタン・行レイアウト
+4. モードボタンツールチップ
+5. Flow / Flash 問題表示エリア
+6. 回答入力エリア
+7. 結果表示
+8. タイマー円形
+9. Flowモード選択画面
+10. レベル選択画面
+11. クイズ画面
+12. 補助スタイル
+======================================================= */
+
+/* 1. 全体共通スタイル */
+body {
+  font-family: sans-serif;
+  text-align: center;
+  margin: 20px;
+  background-color: #e5e7dd; /* シック背景 */
+  color: #333;
+}
+
+/* 2. Game Menu タイトル・サブタイトル */
+#gameMenu h1,
+#appTitle {
+  font-size: 3em;
+  color: #0d6b19; /* 深緑 */
+  margin-bottom: 10px;
+}
+
+#appTitle {
+  position: relative;
+  display: inline-block;
+}
+
+#appTitle::after {
+  content: "🍃"; 
+  position: absolute;
+  right: -0.6em;
+  top: -0.5em;
+  font-size: 0.5em;
+}
+
+#subtitle {
+  font-size: 1em;
+  font-style: italic;
+  color: #7f8c8d; /* 落ち着いたグレー */
+  margin-bottom: 40px;
+}
+
+/* 3. ボタン・行レイアウト */
+button {
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 1em;
+  max-width: 180px;
+  cursor: pointer;
+  border: 1px solid #03751be7;
+  border-radius: 5px;
+  background-color: #caf3ca;
+  color: #006909;            
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+  background-color: #b8d62f;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.buttons-2 button {
+  flex: 1;
+  margin: 0 5px;
+}
+
+/* 4. モードボタンツールチップ */
+.mode-btn {
+  position: relative;
+}
+
+.mode-btn::after {
+  content: attr(data-tooltip);
+  display: none;
+  position: absolute;
+  top: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #006315;
+  color: #dedee7;
+  padding: 5px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  font-size: 0.9em;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.mode-btn:hover::after {
+  display: block;
+  opacity: 1;
+}
+
+/* 5. Flow / Flash 問題表示エリア */
+#question {
+  font-size: 2em; /* Flow用 */
+  margin: 5px 0;
+}
+
+#formula {
+  font-size: 1.6em;
+  color: #555;
+  margin: 5px 0;
+}
+
+body.flash-mode #question {
+  font-size: 4em;  /* Flash用 */
+}
+
+#sessionInfo {
+  position: fixed;      /* 画面に固定 */
+  top: 15px;            /* 上から10px */
+  right: 15px;          /* 右から10px */
+  background-color: rgba(223, 252, 217, 0.8); /* 半透明白背景 */
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  font-size: 1.2em;
+  color: #006909;       /* 緑色文字 */
+  z-index: 999;         /* 他の要素より前面 */
+}
+
+
+/* 6. 回答入力エリア */
+#answer {
+  width: 200px;
+  padding: 5px;
+  font-size: 1em;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  text-align: center;
+}
+
+/* 7. 結果表示 */
+#result {
+  margin-top: 5px;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+/* 8. タイマー円形 */
+.timer-circle {
+  margin: 20px auto;
+  width: 120px;
+  height: 120px;
+  position: relative;
+}
+
+.timer-circle svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* 9. Flowモード選択画面 */
+#flowModeMenu h2 {
+  font-family: sans-serif;  
+  color: #0d6b19;
+  font-size: 2em;
+  margin-bottom: 15px;
+  display: inline-block; /* ブロック幅を文字幅に合わせる */
+
+  position: relative; 
+}
+
+#flowModeMenu h2::after {
+  content: "🍃";
+  position: absolute;
+  right: -1em; /* 文字の右端から少し外側 */
+  top: -0.6em;   /* 上に少しずらす */
+  font-size: 0.5em;
+}
+
+/* サブタイトル用 */
+.mode-subtitle {
+  font-size: 1em;
+  font-style: italic;
+  color: #7f8c8d; /* 落ち着いたグレー */
+  margin-bottom: 15px;
+}
+
+
+/* 10. レベル選択画面 */
+#levelMenu h2 {
+  font-family: sans-serif;  
+  color: #0d6b19;
+  font-size: 2em;
+  margin-bottom: 15px;
+  display: inline-block; /* ブロック幅を文字幅に合わせる */
+
+  position: relative; 
+}
+
+#levelMenu h2::after {
+  content: "🍃";
+  position: absolute;
+  right: -0.9em;
+  top: -0.8em;
+  font-size: 0.5em;
+}
+
+/* サブタイトル用 */
+.level-subtitle {
+  font-size: 1em;
+  font-style: italic;
+  color: #7f8c8d; /* 落ち着いたグレー */
+  margin-bottom: 15px;
+}
+
+
+/* 11. クイズ画面 */
+#quiz input[type="number"] {
+  text-align: center;
+}
+
+/* 12. 補助スタイル */
+.hidden {
+  visibility: hidden;
+}

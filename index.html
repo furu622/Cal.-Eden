@@ -1,0 +1,189 @@
+<!--
+  Cal. Eden
+  © 2026 ふる. All Rights Reserved.
+  Unauthorized use, reproduction, or modification is prohibited.
+-->
+
+<!---------------------------------------------------------------------------->
+
+<!--
+=========================================
+  Math Flow & Math Flash - HTML 目次
+=========================================
+
+■ head
+   ・meta charset / viewport
+   ・title
+   ・CSSリンク（style.css）
+
+■ body
+
+  1. メニュー画面 (#gameMenu)
+     ・タイトル表示
+     ・Flow Mode / Flash Mode ボタン
+
+  2. Flow モード選択 (#flowModeMenu)
+     ・モード選択ボタン（+ -, × ÷, Random）
+     ・Back to Menu ボタン
+
+  3. レベル選択画面 (#levelMenu)
+     ・レベル選択ボタン（Level 1～4）
+     ・Back to Menu ボタン
+
+  4. クイズ画面 (#quiz)
+     ・問題表示エリア
+        - #question : 英文
+        - #formula  : 数式
+     ・回答入力 (#answer)
+     ・結果表示 (#result)
+     ・表示切替ボタン
+        - 英文表示切替 (#toggleQuestionBtn)
+        - 数式表示切替 (#toggleFormulaBtn)
+     ・画面遷移ボタン
+        - Menu / Back to Level
+     ・タイマー円形 (#progress)
+
+■ script
+   ・外部JS読み込み（script.js）
+
+=========================================
+-->
+
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Math Flow & Flash</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- =======================================================
+       1. メニュー画面 (#gameMenu)
+       ・タイトルとFlow/Flash選択ボタン
+  ======================================================== -->
+  <div id="gameMenu">
+    <h1 id="appTitle">Cal. Eden</h1>
+    <p id="subtitle">~ Sharpen your mind with math and English. ~</p>
+    <div class="row buttons-2">
+      <button onclick="startFlow()" class="mode-btn" data-tooltip="英語リスニングと計算力を鍛えるモード">🌱 Flow Mode</button>
+      <button onclick="startFlash()" class="mode-btn" data-tooltip="シンプルなフラッシュ暗算モード">✨ Flash Mode</button>
+    </div>
+  </div>
+
+
+
+  <!-- =======================================================
+       2. Flow モード選択画面 (#flowModeMenu)
+       ・演算モード選択ボタン
+       ・戻るボタン
+  ======================================================== -->
+  <div id="flowModeMenu" style="display:none;">
+    <h2>Select Mode</h2>
+    <p class="mode-subtitle">Let's get started.</p>
+
+    <div class="row buttons-2">
+      <button onclick="selectMode('addsub')">+ -</button>
+      <button onclick="selectMode('muldiv')">× ÷</button>
+      <button onclick="selectMode('random')">Random</button>
+    </div>
+    <div class="row buttons-2">
+      <button onclick="goMenu()">Back to Menu</button>
+    </div>
+  </div>
+
+
+  <!-- =======================================================
+       3. レベル選択画面 (#levelMenu)
+       ・レベル選択ボタン
+       ・戻るボタン
+  ======================================================== -->
+  <div id="levelMenu" style="display:none;">
+    <h2>Select Level</h2>
+    <p class="level-subtitle">Enjoy yor explore!</p>
+
+    <div class="row buttons-2">
+      <button onclick="selectLevel('level1')">🍀</button>
+      <button onclick="selectLevel('level2')">🍀🍀</button>
+    </div>
+    <div class="row buttons-2">
+      <button onclick="selectLevel('level3')">🍀🍀🍀</button>
+      <button onclick="selectLevel('level4')">🍀🍀🍀🍀</button>
+    </div>
+
+    <div class="row">
+      <button onclick="goMenu()">Back to Menu</button>
+    </div>
+  </div>
+
+  <!-- =======================================================
+       4. クイズ画面 (#quiz)
+       ・問題表示 (#question, #formula)
+       ・回答入力 (#answer)
+       ・結果表示 (#result)
+       ・表示切替ボタン (英文/数式)
+       ・画面遷移ボタン (Menu / Back to Level)
+       ・タイマー円形 (#progress)
+  ======================================================== -->
+  <div id="quiz" style="display:none;">
+    <!-- 問題表示 -->
+    <div class="question-row">
+      <h2 id="question"></h2>
+      <div id="formula"></div>
+    </div>
+
+    <!-- 経過表示 -->
+    <div id="sessionInfo">
+      Correct / Total: <span id="correctCount">0</span>/<span id="totalCount">0</span> |
+      Time: <span id="elapsedTime">0:00</span>
+    </div>
+
+
+    <!-- 回答入力 -->
+    <input type="number" id="answer" placeholder="Your answer">
+    <div id="result"></div>
+
+    <!-- 表示切替ボタン -->
+    <div class="row buttons-2">
+      <button id="toggleQuestionBtn" onclick="toggleQuestion()">Show / Hide English</button>
+      <button id="toggleFormulaBtn" onclick="toggleFormula()">Show / Hide Formula</button>
+    </div>
+
+    <!-- 画面遷移ボタン -->
+     <!-- 成果表示ボタン一応残す
+    <div class="row buttons-2">
+      <button onclick="endSession()">Achievement</button>
+    </div>
+    -->
+
+    <div class="row buttons-2">
+      <button onclick="goMenu()">Back to Menu</button>
+      <button onclick="goLevel()">Back to Level</button>
+    </div>
+
+    <!-- タイマー円形 -->
+    <div class="timer-circle">
+      <svg width="120" height="120">
+        <circle
+          id="progress"
+          cx="60" cy="60" r="50"
+          stroke="#4caf50"
+          stroke-width="16"
+          fill="none"
+          stroke-dasharray="339"
+          stroke-dashoffset="0"
+          transform="rotate(-90 60 60)"
+        />
+      </svg>
+    </div>
+  </div>
+
+  <!-- =======================================================
+       外部スクリプト読み込み
+  ======================================================== -->
+  <script src="script.js"></script>
+</body>
+</html>
