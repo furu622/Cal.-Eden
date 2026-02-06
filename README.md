@@ -71,7 +71,11 @@ Cal. Eden/
 ├── index.html
 ├── style.css
 ├── script.js
-└── README.md
+├── README.md
+├── LICENSE
+├── .gitignore
+├─qr_codes
+└─tools
 
 ---
 
