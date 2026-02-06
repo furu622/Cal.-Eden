@@ -84,14 +84,24 @@ Cal. Eden/
 
 ---
 
-## ⚖️ 著作権について
+## ⚖️ License / ライセンス
 
-このソフトウェアおよびソースコードは著作権によって保護されています。
+本プロジェクトは  
+Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International  
+（CC BY-NC-ND 4.0）ライセンスのもとで公開されています。
 
-© 2026 ふる. All Rights Reserved.
-Unauthorized use, reproduction, or modification is prohibited.
+- 商用利用は禁止されています
+- 改変および改変物の再配布は禁止されています
+- クレジット表記が必要です
 
-無断転載・改変・再配布は禁止されています。
+This project is licensed under the  
+CC BY-NC-ND 4.0 International License.
+
+- Commercial use is not permitted
+- Redistribution of modified versions is not permitted
+- Attribution is required
+
+See the LICENSE file for the full legal text.
 
 ---
 

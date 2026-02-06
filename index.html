@@ -1,8 +1,8 @@
 <!--
-  Cal. Eden
-  © 2026 ふる. All Rights Reserved.
-  Unauthorized use, reproduction, or modification is prohibited.
+  Cal. Eden: Original Edition
+  © 2026 ふる. This file is part of this project.
 -->
+
 
 <!---------------------------------------------------------------------------->
 
@@ -135,11 +135,7 @@
       <div id="formula"></div>
     </div>
 
-    <!-- 経過表示 -->
-    <div id="sessionInfo">
-      Correct / Total: <span id="correctCount">0</span>/<span id="totalCount">0</span> |
-      Time: <span id="elapsedTime">0:00</span>
-    </div>
+
 
 
     <!-- 回答入力 -->
@@ -159,11 +155,6 @@
     </div>
     -->
 
-    <div class="row buttons-2">
-      <button onclick="goMenu()">Back to Menu</button>
-      <button onclick="goLevel()">Back to Level</button>
-    </div>
-
     <!-- タイマー円形 -->
     <div class="timer-circle">
       <svg width="120" height="120">
@@ -179,6 +170,19 @@
         />
       </svg>
     </div>
+
+    <!-- 経過表示 -->
+    <div id="sessionInfo">
+      Correct / Total: <span id="correctCount">0</span>/<span id="totalCount">0</span> |
+      Time: <span id="elapsedTime">0:00</span>
+    </div>
+    
+    <div class="row buttons-2">
+      <button onclick="goMenu()">Back to Menu</button>
+      <button onclick="goLevel()">Back to Level</button>
+    </div>
+
+
   </div>
 
   <!-- =======================================================

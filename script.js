@@ -1,8 +1,8 @@
 /*
-  Cal. Eden
-  © 2026 ふる. All Rights Reserved.
-  Unauthorized use, reproduction, or modification is prohibited.
+  Cal. Eden: Original Edition
+  © 2026 ふる. This file is part of this project.
 */
+
 
 /*=================================================================*/
 

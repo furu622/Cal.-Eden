@@ -1,0 +1,5 @@
+# QRコード画像を無視
+qr_codes/
+
+# Pythonスクリプトも無視する場合
+tools/generate_qr_old.py

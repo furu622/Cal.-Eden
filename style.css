@@ -1,7 +1,6 @@
 /*
-  Cal. Eden
-  © 2026 ふる. All Rights Reserved.
-  Unauthorized use, reproduction, or modification is prohibited.
+  Cal. Eden: Original Edition
+  © 2026 ふる. This file is part of this project.
 */
 
 /*=================================================================*/
@@ -138,7 +137,9 @@ body.flash-mode #question {
 }
 
 #sessionInfo {
-  position: fixed;      /* 画面に固定 */
+  position: static;      /* 画面に固定 */
+  margin: 10px auto;     /* 上下余白を調整 */
+  display: inline-block; /* 幅をテキストに合わせる */
   top: 15px;            /* 上から10px */
   right: 15px;          /* 右から10px */
   background-color: rgba(223, 252, 217, 0.8); /* 半透明白背景 */
