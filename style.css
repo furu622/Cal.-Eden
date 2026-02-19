@@ -60,6 +60,20 @@ body {
   margin-bottom: 40px;
 }
 
+.series-box {
+  margin-top: 40px;   /* まずは40pxくらい */
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.2); /* 区切り線（任意） */
+}
+
+.series-box h3 {
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  opacity: 0.6;
+  text-transform: uppercase;
+}
+
+
 /* 3. ボタン・行レイアウト */
 button {
   padding: 10px 20px;
