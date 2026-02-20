@@ -126,6 +126,7 @@ function nextQuestion() {
   document.body.classList.remove("flash-mode");
   const q = generateQuestion();
   state.answer = q.result;
+  console.log("Answer:", state.answer);
   state.isAnswered = false;
   renderQuestion(q);
   speak(q.questionText);
