@@ -62,7 +62,7 @@ function getBGM() {
 function playBGM() {
   const bgm = getBGM();
   if (!bgm) return;
-  bgm.volume = 0.1;
+  bgm.volume = 0.2;
   bgm.play().catch(() => {});
 }
 
