@@ -55,6 +55,24 @@ let state = {
   flashTimeoutId: null
 };
 
+function getBGM() {
+  return document.getElementById("bgm");
+}
+
+function playBGM() {
+  const bgm = getBGM();
+  if (!bgm) return;
+  bgm.volume = 0.1;
+  bgm.play().catch(() => {});
+}
+
+function stopBGM() {
+  const bgm = getBGM();
+  if (!bgm) return;
+  bgm.pause();
+  bgm.currentTime = 0;
+}
+
 /* 3. UI操作 */
 function showScreen(id) {
   ["gameMenu", "flowModeMenu", "levelMenu", "quiz"].forEach(s =>
@@ -93,12 +111,14 @@ function toggleFormula() {
 
 /* 4. メニュー / モード / レベル選択 */
 function startFlow() {
+  playBGM(); 
   state.game = "flow";
   showScreen("flowModeMenu");
   startSession();
 }
 
 function startFlash() {
+  playBGM();
   state.game = "flash";
   state.mode = modes.addsub;
   showScreen("levelMenu");
@@ -117,7 +137,11 @@ function selectLevel(key) {
   else { showScreen("quiz"); nextQuestion(); }
 }
 
-function goMenu() { stopTimer(); showScreen("gameMenu"); }
+function goMenu() { 
+  stopBGM(); 
+  stopTimer();
+  showScreen("gameMenu");
+}
 function goLevel() { stopTimer(); showScreen("levelMenu"); }
 function goFlowModeMenu() { stopTimer(); showScreen("flowModeMenu"); }
 
