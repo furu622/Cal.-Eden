@@ -24,6 +24,15 @@
 12. セッション管理
 ======================================== */
 
+
+
+// 0. ===== SE =====
+const correctSE = new Audio("assets/correct.mp3");
+const wrongSE = new Audio("assets/wrong.mp3");
+
+correctSE.volume = 0.3;
+wrongSE.volume = 0.3;
+
 /* 1. 設定データ */
 const modes = {
   addsub: { name: "Add & Subtract", ops: ["+", "-"] },
@@ -259,6 +268,15 @@ function makeQuestion(a, b, op, result) {
 function checkAnswerUI() {
   const input = Number(document.getElementById("answer").value);
   const isCorrect = input === state.answer;
+
+// SE再生
+  if (isCorrect) {
+    correctSE.currentTime = 0;
+    correctSE.play();
+  } else {
+    wrongSE.currentTime = 0;
+    wrongSE.play();
+  }
 
   const result = document.getElementById("result");
   result.textContent = isCorrect ? "Correct!" : `Wrong! Answer is ${state.answer}`;
